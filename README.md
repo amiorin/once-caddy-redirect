@@ -1,4 +1,4 @@
-# once-root
+# once-caddy-redirect
 
 Minimal HTTP redirector that 301s every request to `https://www.bigconfig.ai{uri}`, preserving path and query string. Path `/up` returns `200 OK` for health checks.
 
@@ -24,8 +24,8 @@ caddy run --config Caddyfile --adapter caddyfile
 With Docker:
 
 ```sh
-docker build -t once-root .
-docker run --rm -p 8080:80 once-root
+docker build -t once-caddy-redirect .
+docker run --rm -p 8080:80 once-caddy-redirect
 
 curl -I http://localhost:8080/      # 301 → https://www.bigconfig.ai/
 curl    http://localhost:8080/up    # OK
@@ -43,5 +43,5 @@ The CI build targets `linux/arm64`. For an x86_64 image pass `--platform linux/a
 ## Image
 
 ```
-ghcr.io/<owner>/once-root:latest
+ghcr.io/amiorin/once-caddy-redirect:latest
 ```

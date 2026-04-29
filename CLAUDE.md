@@ -27,8 +27,8 @@ caddy validate --config Caddyfile --adapter caddyfile
 
 Build and run the container locally (arm64 host):
 ```
-docker build -t once-root .
-docker run --rm -p 8080:80 once-root
+docker build -t once-caddy-redirect .
+docker run --rm -p 8080:80 once-caddy-redirect
 curl -I http://localhost:8080/        # expect 301 to www.bigconfig.ai/
 curl    http://localhost:8080/up      # expect "OK"
 ```
