@@ -11,6 +11,6 @@
 		respond `OK` 200
 	}
 	handle {
-		redir https://www.bigconfig.ai{uri} temporary
+		redir https://www.bigconfig.ai{uri} permanent
 	}
 }
