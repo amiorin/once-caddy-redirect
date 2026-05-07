@@ -31,14 +31,14 @@ curl -I http://localhost:8080/      # 301 → https://www.bigconfig.ai/
 curl    http://localhost:8080/up    # OK
 ```
 
-The CI build targets `linux/arm64`. For an x86_64 image pass `--platform linux/amd64` to `docker build`.
+CI publishes a multi-arch image covering both `linux/arm64` and `linux/amd64`. For a cross-arch local build pass `--platform linux/amd64` or `--platform linux/arm64` to `docker build`.
 
 ## Files
 
 - `Caddyfile` — redirect + health endpoint
 - `Procfile` — Hivemind process definitions (currently just `caddy`)
 - `Dockerfile` — two-stage build: fetch Hivemind, layer it onto `caddy:2-alpine`
-- `.github/workflows/docker-publish.yml` — builds and pushes `ghcr.io/<repo>:latest` and `:sha-<short>` on push to `main`
+- `.github/workflows/cicd.yml` — builds arm64 and amd64 in parallel, publishes multi-arch manifests `ghcr.io/<repo>:latest` and `:sha-<short>`, then SSH-deploys to the server with `sudo once update bigconfig.ai`
 
 ## Image
 
