@@ -123,7 +123,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
-          SERVER_USER: deploy
+          SERVER_USER: ${{ secrets.SERVER_USER }}
           HOST: bigconfig.ai
         run: |
           # Create the .ssh directory and start the agent
